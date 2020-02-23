@@ -1,3 +1,17 @@
 <resources>
     <string name="app_name">calculator</string>
+    <string name="title_activity_settings">SettingsActivity</string>
+
+    <string-array name="Length">
+        <item>"Yards"</item>
+        <item>"Meters"</item>
+        <item>"Miles"</item>
+    </string-array>
+
+    <string-array name="Volume">
+        <item>"Gallons"</item>
+        <item>"Liters"</item>
+        <item>"Quarts"</item>
+    </string-array>
+
 </resources>
