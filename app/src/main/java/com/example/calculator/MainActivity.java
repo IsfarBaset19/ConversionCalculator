@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 //import android.support.*;
-import android.speech.tts.TextToSpeech;
 import android.widget.EditText;
 import android.widget.Button;
 import android.widget.TextView;
@@ -16,7 +15,13 @@ public class MainActivity extends AppCompatActivity {
     public static final int UNIT_SELECTION = 1;
 
     int lengthUnit = 1;
-    UnitsConverter.CalculatorMode mode = UnitsConverter.CalculatorMode.Length;
+
+    UnitsConverter.CalculatorMode currentMode = UnitsConverter.CalculatorMode.Length;
+    UnitsConverter.LengthUnits currentLengthFromUnit = UnitsConverter.LengthUnits.Meters;
+    UnitsConverter.LengthUnits currentLengthToUnit = UnitsConverter.LengthUnits.Yards;
+    UnitsConverter.VolumeUnits currentVolumeFromUnit = UnitsConverter.VolumeUnits.Gallons;
+    UnitsConverter.VolumeUnits currentVolumeToUnit = UnitsConverter.VolumeUnits.Liters;
+
 
 
 
@@ -46,8 +51,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final EditText FromText = (EditText) findViewById(R.id.FromText);
-        final EditText ToText= (EditText) findViewById(R.id.ToText);
+        final EditText ToText = (EditText) findViewById(R.id.ToText);
+        final EditText FromText= (EditText) findViewById(R.id.FromText);
 
         final TextView title = findViewById(R.id.title);
 
@@ -59,23 +64,36 @@ public class MainActivity extends AppCompatActivity {
         final Button ModeButton = (Button) findViewById(R.id.ModeButton);
 
         CalculateButton.setOnClickListener(v -> {
+            double convert = 0.0;
+            try {
+                convert = Double.valueOf(FromText.getText().toString());
+            }
+            catch (NumberFormatException e){
 
+            }
+
+            if(currentMode == UnitsConverter.CalculatorMode.Length){
+                ToText.setText(Double.toString(UnitsConverter.convert(convert,currentLengthFromUnit,currentLengthToUnit)));
+            }
+            else if(currentMode == UnitsConverter.CalculatorMode.Volume){
+                ToText.setText(Double.toString(UnitsConverter.convert(convert,currentVolumeFromUnit,currentVolumeToUnit)));
+            }
         });
 
         ClearButton.setOnClickListener(v -> {
-            FromText.setText("");
             ToText.setText("");
+            FromText.setText("");
         });
 
         ModeButton.setOnClickListener(v -> {
-            if(mode == UnitsConverter.CalculatorMode.Length) {
-                mode = UnitsConverter.CalculatorMode.Volume;
+            if(currentMode == UnitsConverter.CalculatorMode.Length) {
+                currentMode = UnitsConverter.CalculatorMode.Volume;
                 fromUnit.setText("Gallons");
                 toUnit.setText("Liters");
 
             }
-            else if(mode == UnitsConverter.CalculatorMode.Volume){
-                mode = UnitsConverter.CalculatorMode.Length;
+            else if(currentMode == UnitsConverter.CalculatorMode.Volume){
+                currentMode = UnitsConverter.CalculatorMode.Length;
                 fromUnit.setText("Meters");
                 toUnit.setText("Yards");
             }

@@ -19,20 +19,20 @@
         app:layout_constraintVertical_bias="0.07" />
 
     <EditText
-        android:id="@+id/ToText"
+        android:id="@+id/FromText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="42dp"
         android:ems="10"
         android:hint="Enter From Value"
         android:inputType="numberDecimal"
-        app:layout_constraintBottom_toTopOf="@+id/FromText"
+        app:layout_constraintBottom_toTopOf="@+id/ToText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.08"
         app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/FromText"
+        android:id="@+id/ToText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="228dp"
@@ -52,7 +52,7 @@
         android:text="Mode"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FromText"
+        app:layout_constraintTop_toBottomOf="@+id/ToText"
         app:layout_constraintVertical_bias="0.073" />
 
     <TextView
@@ -63,7 +63,7 @@
         android:text="Yards"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.273"
-        app:layout_constraintStart_toEndOf="@+id/ToText"
+        app:layout_constraintStart_toEndOf="@+id/FromText"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -75,7 +75,7 @@
         android:text="Meters"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/FromText"
+        app:layout_constraintStart_toEndOf="@+id/ToText"
         app:layout_constraintTop_toBottomOf="@+id/FromUnit" />
 
     <TextView
@@ -84,7 +84,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="From"
-        app:layout_constraintBottom_toTopOf="@+id/ToText"
+        app:layout_constraintBottom_toTopOf="@+id/FromText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.836" />
@@ -95,9 +95,9 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:text="To"
-        app:layout_constraintBottom_toTopOf="@+id/FromText"
+        app:layout_constraintBottom_toTopOf="@+id/ToText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ToText"
+        app:layout_constraintTop_toBottomOf="@+id/FromText"
         app:layout_constraintVertical_bias="0.608" />
 
     <Button
@@ -108,7 +108,7 @@
         android:text="Clear"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FromText"
+        app:layout_constraintTop_toBottomOf="@+id/ToText"
         app:layout_constraintVertical_bias="0.073" />
 
     <Button
@@ -120,7 +120,7 @@
         app:layout_constraintEnd_toStartOf="@+id/ClearButton"
         app:layout_constraintHorizontal_bias="0.39"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/FromText"
+        app:layout_constraintTop_toBottomOf="@+id/ToText"
         app:layout_constraintVertical_bias="0.073" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
