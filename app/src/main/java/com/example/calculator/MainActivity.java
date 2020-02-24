@@ -17,8 +17,8 @@ public class MainActivity extends AppCompatActivity {
     int lengthUnit = 1;
 
     UnitsConverter.CalculatorMode currentMode = UnitsConverter.CalculatorMode.Length;
-    UnitsConverter.LengthUnits currentLengthFromUnit = UnitsConverter.LengthUnits.Meters;
-    UnitsConverter.LengthUnits currentLengthToUnit = UnitsConverter.LengthUnits.Yards;
+    UnitsConverter.LengthUnits currentLengthFromUnit = UnitsConverter.LengthUnits.Yards;
+    UnitsConverter.LengthUnits currentLengthToUnit = UnitsConverter.LengthUnits.Meters;
     UnitsConverter.VolumeUnits currentVolumeFromUnit = UnitsConverter.VolumeUnits.Gallons;
     UnitsConverter.VolumeUnits currentVolumeToUnit = UnitsConverter.VolumeUnits.Liters;
 
@@ -88,14 +88,14 @@ public class MainActivity extends AppCompatActivity {
         ModeButton.setOnClickListener(v -> {
             if(currentMode == UnitsConverter.CalculatorMode.Length) {
                 currentMode = UnitsConverter.CalculatorMode.Volume;
-                fromUnit.setText("Gallons");
-                toUnit.setText("Liters");
+                fromUnit.setText(currentVolumeFromUnit.toString());
+                toUnit.setText(currentVolumeToUnit.toString());
 
             }
             else if(currentMode == UnitsConverter.CalculatorMode.Volume){
                 currentMode = UnitsConverter.CalculatorMode.Length;
-                fromUnit.setText("Meters");
-                toUnit.setText("Yards");
+                fromUnit.setText(currentLengthFromUnit.toString());
+                toUnit.setText(currentLengthToUnit.toString());
             }
 
         });
