@@ -60,12 +60,55 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 
+        TextView tv1 = (TextView) findViewById(R.id.FromUnitLabel);
+        TextView tv2 = (TextView) findViewById(R.id.ToUnitLabel);
         if (resultCode == UNIT_SELECTION) {
-            TextView tv1 = (TextView) findViewById(R.id.FromUnitLabel);
+
             tv1.setText("" + data.getStringExtra("unit1"));
-            TextView tv2 = (TextView) findViewById(R.id.ToUnitLabel);
             tv2.setText("" + data.getStringExtra("unit2"));
         }
+
+
+        if(data.getStringExtra("unit1").equals("Meters")){
+            currentLengthFromUnit = UnitsConverter.LengthUnits.Meters;
+        }
+        else if(data.getStringExtra("unit1").equals("Yards")){
+            currentLengthFromUnit = UnitsConverter.LengthUnits.Yards;
+        }
+        else if(data.getStringExtra("unit1").equals("Miles")){
+            currentLengthFromUnit = UnitsConverter.LengthUnits.Miles;
+        }
+        else if(data.getStringExtra("unit1").equals("Gallons")){
+            currentVolumeFromUnit = UnitsConverter.VolumeUnits.Gallons;
+        }
+        else if(data.getStringExtra("unit1").equals("Liters")){
+            currentVolumeFromUnit = UnitsConverter.VolumeUnits.Liters;
+        }
+        else if(data.getStringExtra("unit1").equals("Quarts")){
+            currentVolumeFromUnit = UnitsConverter.VolumeUnits.Quarts;
+        }
+
+
+
+        if(data.getStringExtra("unit2").equals("Meters")){
+            currentLengthToUnit = UnitsConverter.LengthUnits.Meters;
+        }
+        else if(data.getStringExtra("unit2").equals("Yards")){
+            currentLengthToUnit = UnitsConverter.LengthUnits.Yards;
+        }
+        else if(data.getStringExtra("unit2").equals("Miles")){
+            currentLengthToUnit = UnitsConverter.LengthUnits.Miles;
+        }
+        else if(data.getStringExtra("unit2").equals("Gallons")){
+            currentVolumeToUnit = UnitsConverter.VolumeUnits.Gallons;
+        }
+        else if(data.getStringExtra("unit2").equals("Liters")){
+            currentVolumeToUnit = UnitsConverter.VolumeUnits.Liters;
+        }
+        else if(data.getStringExtra("unit2").equals("Quarts")){
+            currentVolumeToUnit = UnitsConverter.VolumeUnits.Quarts;
+        }
+
 
      }
 
@@ -125,9 +168,13 @@ public class MainActivity extends AppCompatActivity {
 
             if(currentMode == UnitsConverter.CalculatorMode.Length){
                 ToText.setText(Double.toString(UnitsConverter.convert(convert,currentLengthFromUnit,currentLengthToUnit)));
+                System.out.println(currentLengthFromUnit);
+                System.out.println(currentLengthToUnit);
             }
             else if(currentMode == UnitsConverter.CalculatorMode.Volume){
                 ToText.setText(Double.toString(UnitsConverter.convert(convert,currentVolumeFromUnit,currentVolumeToUnit)));
+                System.out.println(currentVolumeFromUnit);
+                System.out.println(currentVolumeToUnit);
             }
         });
 
