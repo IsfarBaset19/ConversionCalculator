@@ -19,15 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     int lengthUnit = 1;
 
-
     UnitsConverter.CalculatorMode currentMode = UnitsConverter.CalculatorMode.Length;
     UnitsConverter.LengthUnits currentLengthFromUnit = UnitsConverter.LengthUnits.Yards;
     UnitsConverter.LengthUnits currentLengthToUnit = UnitsConverter.LengthUnits.Meters;
     UnitsConverter.VolumeUnits currentVolumeFromUnit = UnitsConverter.VolumeUnits.Gallons;
     UnitsConverter.VolumeUnits currentVolumeToUnit = UnitsConverter.VolumeUnits.Liters;
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -116,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
      }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -142,6 +139,16 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+        FromText.setOnTouchListener((v, event) -> {
+            ToText.setText("");
+            return false;
+        });
+
+        ToText.setOnTouchListener((v, event) -> {
+            FromText.setText("");
+            return false;
+        });
 
         CalculateButton.setOnClickListener(v -> {
             double convert = 0.0;
