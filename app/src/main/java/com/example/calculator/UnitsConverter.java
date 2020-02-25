@@ -11,6 +11,9 @@ package com.example.calculator;
 import java.util.HashMap;
 
 public class UnitsConverter {
+    /**
+     *
+     */
     //added this
     public enum CalculatorMode{
         Length, Volume

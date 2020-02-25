@@ -18,6 +18,7 @@ public class SettingsActivity extends AppCompatActivity {
 
 
     public static int LENGTH_UNIT = 1 ;
+
     private String FromUnit = "Meters";
     private String ToUnit = "Meters";
 
@@ -32,20 +33,17 @@ public class SettingsActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(SettingsActivity.this, MainActivity.class);
-                intent.putExtra("FromUnit", FromUnit);
-                intent.putExtra("ToUnit", ToUnit);
-                intent.putExtra("LENGTH_UNIT", LENGTH_UNIT);
-                startActivity (intent);
+                Intent intent = new Intent();
+                intent.putExtra("unit1", FromUnit);
+                intent.putExtra("unit2", ToUnit);
+                setResult(MainActivity.UNIT_SELECTION,intent);
+
                 finish();
             }
 
         });
 
-        Intent payload = getIntent();
-        if (payload.hasExtra("isLength")) {
-            LENGTH_UNIT = payload.getIntExtra("isLength", 0);
-        }
+
 
 
         final Spinner FromSpinner;

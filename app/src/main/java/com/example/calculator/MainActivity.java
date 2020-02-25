@@ -2,6 +2,7 @@ package com.example.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 //import android.support.*;
 import android.widget.EditText;
@@ -14,7 +15,6 @@ public class MainActivity extends AppCompatActivity {
 
     public static final int UNIT_SELECTION = 1;
 
-    int lengthUnit = 1;
 
     UnitsConverter.CalculatorMode currentMode = UnitsConverter.CalculatorMode.Length;
     UnitsConverter.LengthUnits currentLengthFromUnit = UnitsConverter.LengthUnits.Yards;
@@ -28,21 +28,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.main_menu, menu);
-        return true; // "true" means the menu should be visible
+        return true;
     }
 
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.SettingsButton) {
             Intent intent = new Intent (MainActivity.this, SettingsActivity.class);
 
-            intent.putExtra("lengthUnit", lengthUnit);
-            setResult(SettingsActivity.LENGTH_UNIT,intent);
-            startActivity(intent);
-            finish();
+            startActivityForResult(intent,UNIT_SELECTION);
+
+
 
             return true;
         }
         return false;
+    }
+
+    @SuppressLint("SetTextI18n")
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+
+        if (resultCode == UNIT_SELECTION) {
+            TextView tv1 = (TextView) findViewById(R.id.FromUnitLabel);
+            tv1.setText("" + data.getStringExtra("unit1"));
+            TextView tv2 = (TextView) findViewById(R.id.ToUnitLabel);
+            tv2.setText("" + data.getStringExtra("unit2"));
+        }
+
     }
 
     @Override
@@ -56,8 +68,8 @@ public class MainActivity extends AppCompatActivity {
 
         final TextView title = findViewById(R.id.title);
 
-        final TextView fromUnit = findViewById(R.id.FromUnit);
-        final TextView toUnit = findViewById(R.id.ToUnit);
+        final TextView fromUnit = findViewById(R.id.FromUnitLabel);
+        final TextView toUnit = findViewById(R.id.ToUnitLabel);
 
         final Button CalculateButton = (Button) findViewById(R.id.CalculateButton);
         final Button ClearButton = (Button) findViewById(R.id.ClearButton);
@@ -103,6 +115,9 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
+
+
 
 
 }

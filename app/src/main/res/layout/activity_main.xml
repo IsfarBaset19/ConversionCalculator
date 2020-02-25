@@ -56,7 +56,7 @@
         app:layout_constraintVertical_bias="0.073" />
 
     <TextView
-        android:id="@+id/FromUnit"
+        android:id="@+id/FromUnitLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="156dp"
@@ -67,7 +67,7 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/ToUnit"
+        android:id="@+id/ToUnitLabel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="40dp"
@@ -76,7 +76,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/ToText"
-        app:layout_constraintTop_toBottomOf="@+id/FromUnit" />
+        app:layout_constraintTop_toBottomOf="@+id/FromUnitLabel" />
 
     <TextView
         android:id="@+id/textView4"
