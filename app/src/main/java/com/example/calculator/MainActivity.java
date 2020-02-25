@@ -146,21 +146,35 @@ public class MainActivity extends AppCompatActivity {
         CalculateButton.setOnClickListener(v -> {
             double convert = 0.0;
             try {
-                convert = Double.valueOf(FromText.getText().toString());
+                if(ToText.getText().toString().equals(""))
+                    convert = Double.valueOf(FromText.getText().toString());
+                else
+                    convert = Double.valueOf(ToText.getText().toString());
             }
             catch (NumberFormatException e){
 
             }
 
             if(currentMode == UnitsConverter.CalculatorMode.Length){
-                ToText.setText(Double.toString(UnitsConverter.convert(convert,currentLengthFromUnit,currentLengthToUnit)));
-                System.out.println(currentLengthFromUnit);
-                System.out.println(currentLengthToUnit);
+                System.out.println(ToText.getText().toString().equals("") + "test");
+                if(ToText.getText().toString().equals("")) {
+                    ToText.setText(Double.toString(UnitsConverter.convert(convert, currentLengthFromUnit, currentLengthToUnit)));
+                    System.out.println("one");
+                }
+                else {
+                    FromText.setText(Double.toString(UnitsConverter.convert(convert, currentLengthToUnit, currentLengthFromUnit)));
+                    System.out.println("two");
+                }
+//                System.out.println(currentLengthFromUnit);
+//                System.out.println(currentLengthToUnit);
             }
             else if(currentMode == UnitsConverter.CalculatorMode.Volume){
-                ToText.setText(Double.toString(UnitsConverter.convert(convert,currentVolumeFromUnit,currentVolumeToUnit)));
-                System.out.println(currentVolumeFromUnit);
-                System.out.println(currentVolumeToUnit);
+                if(ToText.getText().toString().equals(""))
+                    ToText.setText(Double.toString(UnitsConverter.convert(convert,currentVolumeToUnit,currentVolumeFromUnit)));
+                else
+                    FromText.setText(Double.toString(UnitsConverter.convert(convert,currentVolumeFromUnit,currentVolumeToUnit)));
+//                System.out.println(currentVolumeFromUnit);
+//                System.out.println(currentVolumeToUnit);
             }
         });
 
