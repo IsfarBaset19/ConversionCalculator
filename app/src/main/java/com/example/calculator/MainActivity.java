@@ -10,6 +10,7 @@ import android.widget.*;
 import android.widget.TextView;
 import android.view.*;
 import android.content.*;
+import android.view.inputmethod.InputMethodManager;
 
 import org.w3c.dom.Text;
 
@@ -183,11 +184,16 @@ public class MainActivity extends AppCompatActivity {
 //                System.out.println(currentVolumeFromUnit);
 //                System.out.println(currentVolumeToUnit);
             }
+            closeKeyboard();
         });
+
+
 
         ClearButton.setOnClickListener(v -> {
             ToText.setText("");
             FromText.setText("");
+            closeKeyboard();
+
         });
 
         ModeButton.setOnClickListener(v -> {
@@ -206,6 +212,7 @@ public class MainActivity extends AppCompatActivity {
                 toUnit.setText(currentLengthToUnit.toString());
                 title.setText("Length Converter");
             }
+            closeKeyboard();
 
         });
 
@@ -213,7 +220,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-
+    private void closeKeyboard() {
+        View view = this.getCurrentFocus();
+        if (view != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(view.getWindowToken(), 0);
+        }
+    }
 
 
 
