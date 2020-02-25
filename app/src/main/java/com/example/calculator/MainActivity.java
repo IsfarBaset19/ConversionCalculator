@@ -6,7 +6,7 @@ import android.annotation.SuppressLint;
 import android.os.Bundle;
 //import android.support.*;
 import android.widget.EditText;
-import android.widget.Button;
+import android.widget.*;
 import android.widget.TextView;
 import android.view.*;
 import android.content.*;
@@ -61,6 +61,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        Toolbar toolbar = findViewById(R.id.toolbar);
 
 
         final EditText ToText = (EditText) findViewById(R.id.ToText);
