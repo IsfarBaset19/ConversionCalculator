@@ -19,15 +19,11 @@ public class MainActivity extends AppCompatActivity {
 
     int lengthUnit = 1;
 
-
     UnitsConverter.CalculatorMode currentMode = UnitsConverter.CalculatorMode.Length;
     UnitsConverter.LengthUnits currentLengthFromUnit = UnitsConverter.LengthUnits.Yards;
     UnitsConverter.LengthUnits currentLengthToUnit = UnitsConverter.LengthUnits.Meters;
     UnitsConverter.VolumeUnits currentVolumeFromUnit = UnitsConverter.VolumeUnits.Gallons;
     UnitsConverter.VolumeUnits currentVolumeToUnit = UnitsConverter.VolumeUnits.Liters;
-
-
-
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -99,6 +95,24 @@ public class MainActivity extends AppCompatActivity {
         }
 
 
+
+        FromText.setOnTouchListener(new android.view.View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                ToText.setText("");
+                return false;
+            }
+
+        });
+
+        ToText.setOnTouchListener(new android.view.View.OnTouchListener(){
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                FromText.setText("");
+                return false;
+            }
+
+        });
 
         CalculateButton.setOnClickListener(v -> {
             double convert = 0.0;
