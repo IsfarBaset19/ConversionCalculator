@@ -112,6 +112,7 @@ public class MainActivity extends AppCompatActivity {
 
      }
 
+    @SuppressLint("ClickableViewAccessibility")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -139,22 +140,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        FromText.setOnTouchListener(new android.view.View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                ToText.setText("");
-                return false;
-            }
-
+        FromText.setOnTouchListener((v, event) -> {
+            ToText.setText("");
+            return false;
         });
 
-        ToText.setOnTouchListener(new android.view.View.OnTouchListener(){
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                FromText.setText("");
-                return false;
-            }
-
+        ToText.setOnTouchListener((v, event) -> {
+            FromText.setText("");
+            return false;
         });
 
         CalculateButton.setOnClickListener(v -> {
