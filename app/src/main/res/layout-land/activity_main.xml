@@ -118,6 +118,8 @@
         android:layout_marginTop="32dp"
         android:text="Calculate"
         app:layout_constraintEnd_toStartOf="@+id/ClearButton"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintHorizontal_weight="1"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/ToText" />
